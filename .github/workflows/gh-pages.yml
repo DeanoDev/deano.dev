@@ -1,4 +1,4 @@
-name: Github Pages
+name: Publish to Github Pages
 
 on:
   push:
@@ -28,3 +28,9 @@ jobs:
         deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         publish_dir: ./Output
         publish_branch: gh-pages
+
+    - name: Purge Cloudflare Cache
+      run: sh ./.github/workflows/PurgeCloudflareCache.sh
+      env:
+        CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
+        CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
