@@ -7,6 +7,8 @@ struct DeanoDev: Website {
     enum SectionID: String, WebsiteSectionID {
         // Add the sections that you want your website to contain here:
         case posts
+        case portfolio
+        case about
     }
 
     struct ItemMetadata: WebsiteItemMetadata {
@@ -14,12 +16,12 @@ struct DeanoDev: Website {
     }
 
     // Update these properties to configure your website:
-    var url = URL(string: "https://your-website-url.com")!
-    var name = "DeanoDev"
-    var description = "A description of DeanoDev"
+    var url = URL(string: "https://deano.dev")!
+    var name = "deano.dev"
+    var description = "Feelings & findings on Apple platforms development."
     var language: Language { .english }
     var imagePath: Path? { nil }
 }
 
 // This will generate your website using the built-in Foundation theme:
-try DeanoDev().publish(withTheme: .foundation)
+try DeanoDev().publish(withTheme: .murphy)
