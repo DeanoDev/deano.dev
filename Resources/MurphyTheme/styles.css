@@ -142,6 +142,14 @@ footer {
 /*
 Splash formatting inspired by Gui Rambo of https://rambo.codes/ 
 */
+
+pre, pre.splash {
+  background-color: #16181A;
+  border-radius: 8px;
+  padding: 16px;
+  -webkit-overflow-scrolling: touch; 
+}
+
 pre code {
   display: block;
   color: #FFFFFF;
