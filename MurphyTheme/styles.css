@@ -104,7 +104,7 @@ a:focus {
 
 .item-list h1 {
     margin-bottom: 16px;
-    font-size: large;
+    font-size: x-large;
 }
 
 .item-list h1 a {
@@ -137,6 +137,47 @@ footer {
     color: var(--secondary-label);
     font-size: small;
 }
+
+
+/*
+Splash formatting inspired by Gui Rambo of https://rambo.codes/ 
+*/
+pre code {
+  display: block;
+  color: #FFFFFF;
+  line-height: 1.4em;
+  font-size: small;
+  white-space: pre;
+  background-color: #16181A;
+  padding: 16px;
+  font-family: "SF Mono", monospace;
+  border-radius: 8px;
+  overflow:auto;
+}
+
+pre code .splash-keyword {
+  color: #FC5FA3; }
+
+pre code .splash-type {
+  color: #5DD8FF; }
+
+pre code .splash-call {
+  color: #75B492; }
+
+pre code .splash-property {
+  color: #91D462; }
+
+pre code .splash-number {
+  color: #9686F5; }
+
+pre code .splash-string {
+  color: #FC6A5D; }
+
+pre code .splash-comment {
+  color: #6C7986; }
+
+pre code .splash-dotAccess {
+  color: #99E8D5; }
 
 @media (prefers-color-scheme: dark) {
 /* Dark Mode Color Scheme */
