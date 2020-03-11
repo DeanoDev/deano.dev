@@ -1,6 +1,7 @@
 import Foundation
-import Publish
 import Plot
+import Publish
+import SplashPublishPlugin
 
 // This type acts as the configuration for your website.
 struct DeanoDev: Website {
@@ -18,10 +19,14 @@ struct DeanoDev: Website {
     // Update these properties to configure your website:
     var url = URL(string: "https://deano.dev")!
     var name = "deano.dev"
-    var description = "Feelings & findings on Apple platforms development."
+    var description = "Findings and feelings on Apple platforms development."
     var language: Language { .english }
     var imagePath: Path? { nil }
+    
 }
 
 // This will generate your website using the built-in Foundation theme:
-try DeanoDev().publish(withTheme: .murphy)
+try DeanoDev().publish(
+    withTheme: .murphy,
+    plugins: [.splash(withClassPrefix: "splash-")]
+)
