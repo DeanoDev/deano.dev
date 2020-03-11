@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "CNAMEPublishPlugin",
+        "repositoryURL": "https://github.com/SwiftyGuerrero/CNAMEPublishPlugin",
+        "state": {
+          "branch": null,
+          "revision": "01dfbfd68a0fa9844b3e4a783b1a367c5af0324f",
+          "version": "0.1.0"
+        }
+      },
+      {
         "package": "Codextended",
         "repositoryURL": "https://github.com/johnsundell/codextended.git",
         "state": {

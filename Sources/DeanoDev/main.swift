@@ -1,3 +1,4 @@
+import CNAMEPublishPlugin
 import Foundation
 import Plot
 import Publish
@@ -28,5 +29,5 @@ struct DeanoDev: Website {
 // This will generate your website using the built-in Foundation theme:
 try DeanoDev().publish(
     withTheme: .murphy,
-    plugins: [.splash(withClassPrefix: "splash-")]
+    plugins: [.splash(withClassPrefix: "splash-"), .generateCNAME(with: "deano.dev")]
 )
