@@ -62,7 +62,12 @@ private struct MurphyHTMLFactory<Site: Website>: HTMLFactory {
                     .article(
                         .div(
                             .class("content"),
-                            .contentBody(item.body)
+                            .contentBody(item.body),
+                            .p(
+                                .class("item-date"),
+                                .br(),
+                                .text(DateFormatter.longDate.string(from: item.date))
+                            )
                         )
                     )
                 ),
