@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/SwiftyGuerrero/CNAMEPublishPlugin",
         "state": {
           "branch": null,
-          "revision": "01dfbfd68a0fa9844b3e4a783b1a367c5af0324f",
-          "version": "0.1.0"
+          "revision": "17bf8912dee5f3639f9956143a38032fca3a9d56",
+          "version": "0.2.0"
         }
       },
       {
@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/johnsundell/publish.git",
         "state": {
           "branch": null,
-          "revision": "9458bacb992f1fde35648fd4bb379fb7335d571c",
-          "version": "0.5.0"
+          "revision": "e77aab786992350ea92333737fdb3d7cad3ca8fc",
+          "version": "0.7.0"
         }
       },
       {
