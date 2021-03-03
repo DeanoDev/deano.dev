@@ -28,9 +28,9 @@ jobs:
         deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         publish_dir: ./Output
         publish_branch: gh-pages
-    
+
     - name: Purge Cloudflare Cache
-      uses: jakejarvis/cloudflare-purge-action@master
+      run: sh ./.github/workflows/PurgeCloudflareCache.sh
       env:
         CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
-        CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

@@ -1,23 +1,40 @@
 #!/bin/zsh
 
+######## Check for required/optional inputs. ########
+
+# Check if Zone ID is set.
 if [ -z "${CLOUDFLARE_ZONE}" ]; then
     echo "Cloudflare zone not found"
     exit 1
 fi
 
+# Check if API Token is set.
 if [ -z "${CLOUDFLARE_API_TOKEN}" ]; then
     echo "Cloudflare auth key not found"
     exit 2
 fi
 
-response=$(curl -X POST "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE}/purge_cache" -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" -H "Content-Type: application/json" --data '{"purge_everything":true}')
+######## Call the API and store the response for later. ########
 
-echo "Response data: $response"
+HTTP_RESPONSE=$(curl -sS "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE}/purge_cache" \
+                      -H "Content-Type: application/json" \
+                      -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+                      -w "HTTP_STATUS:%{http_code}" \
+                      "$@")
 
-if [[ $response =~ '"success": true' ]]; then
-    echo "Cloudflare cache cleared successfully"
-    exit 0
+######## Format response for a pretty command line output. ########
+
+# Store result and HTTP status code separately to appropriately throw CI errors.
+# https://gist.github.com/maxcnunes/9f77afdc32df354883df
+HTTP_BODY=$(echo "${HTTP_RESPONSE}" | sed -E 's/HTTP_STATUS\:[0-9]{3}$//')
+HTTP_STATUS=$(echo "${HTTP_RESPONSE}" | tr -d '\n' | sed -E 's/.*HTTP_STATUS:([0-9]{3})$/\1/')
+
+# Fail pipeline and print errors if API doesn't return an OK status.
+if [ "${HTTP_STATUS}" -eq "200" ]; then
+  echo "Successfully purged!"
+  exit 0
 else
-    echo "Cloudflare API call failed"
-    exit 3
+  echo "Purge failed. API response was: "
+  echo "${HTTP_BODY}"
+  exit 1
 fi
