@@ -20,7 +20,7 @@ struct DeanoDev: Website {
     // Update these properties to configure your website:
     var url = URL(string: "https://deano.dev")!
     var name = "deano.dev"
-    var description = "Findings and feelings on Apple platforms development."
+    var description = "A work in progress"
     var language: Language { .english }
     var imagePath: Path? { nil }
     
