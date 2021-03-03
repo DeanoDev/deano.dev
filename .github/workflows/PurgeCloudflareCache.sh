@@ -16,9 +16,10 @@ fi
 
 ######## Call the API and store the response for later. ########
 
-HTTP_RESPONSE=$(curl -sS "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE}/purge_cache" \
+HTTP_RESPONSE=$(curl -X POST "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE}/purge_cache" \
                       -H "Content-Type: application/json" \
                       -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+                      --data '{"purge_everything":true}' \
                       -w "HTTP_STATUS:%{http_code}" \
                       "$@")
 
@@ -36,5 +37,5 @@ if [ "${HTTP_STATUS}" -eq "200" ]; then
 else
   echo "Purge failed. API response was: "
   echo "${HTTP_BODY}"
-  exit 1
+  exit 3
 fi
